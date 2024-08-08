@@ -64,22 +64,14 @@ This project uses a OpenPose program developped by [ildoonet](https://github.com
 
 Please download it:
 ```bash
-export MyRoot=$PWD
-cd src/githubs  
 git clone https://github.com/felixchenfy/ildoonet-tf-pose-estimation
 mv ildoonet-tf-pose-estimation tf-pose-estimation
 ```
 
 ## 2.2. Download pretrained models
-The mobilenet_thin models are already included in the project. No need to download. See folder:
-```
-src/githubs/tf-pose-estimation/models/graph✗ ls
-cmu  mobilenet_thin  mobilenet_v2_large  mobilenet_v2_small
-```
 
-If you want to use the original OpenPose model which is named "cmu" here, you need to download it: 
 ```
-cd $MyRoot/src/githubs/tf-pose-estimation/models/graph/cmu  
+cd tf-pose-estimation/models/graph/cmu  
 bash download.sh  
 ```
 
@@ -88,29 +80,14 @@ Basically you have to follow the tutorial of `tf-pose-estimation` project. If yo
 
 Please follow its tutorial [here](https://github.com/felixchenfy/ildoonet-tf-pose-estimation#install). I've copied what I ran to below:
 ```bash
-conda create -n tf tensorflow-gpu
-conda activate tf
+cd tf-pose-estimation
+pip install -r requirements.txt
 
-cd $MyRoot/src/githubs/tf-pose-estimation
-pip3 install -r requirements.txt
-pip3 install jupyter tqdm
-
-# Install tensorflow.
-# You may need to take a few tries and select the version that is compatible with your cuDNN. If the version mismatches, you might get this error: "Error : Failed to get convolution algorithm."
-pip3 install tensorflow-gpu==1.13.1
-
-# Compile c++ library as described [here](https://github.com/felixchenfy/ildoonet-tf-pose-estimation#install-1):
-sudo apt install swig
-pip3 install "git+https://github.com/philferriere/cocoapi.git#egg=pycocotools&subdirectory=PythonAPI"
-cd $MyRoot/src/githubs/tf-pose-estimation/tf_pose/pafprocess
+cd tf-pose-estimation/tf_pose/pafprocess
 swig -python -c++ pafprocess.i && python3 setup.py build_ext --inplace
 ```
 
-Then install some small libraries used by me:
-```bash
-cd $MyRoot
-pip3 install -r requirements.txt
-```
+
 
 ## 2.4. Verify installation
 Make sure you can successfully run its demo examples:

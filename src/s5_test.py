@@ -320,7 +320,7 @@ if __name__ == "__main__":
 
     # -- Image reader and displayer
     images_loader = select_images_loader(SRC_DATA_TYPE, SRC_DATA_PATH)
-    img_displayer = lib_images_io.ImageDisplayer()
+    #img_displayer = lib_images_io.ImageDisplayer()
 
     # -- Init output
 
@@ -367,7 +367,7 @@ if __name__ == "__main__":
                 print("prediced label is :", dict_id2label[min_id])
 
             # -- Display image, and write to video.avi
-            img_displayer.display(img_disp, wait_key_ms=1)
+            #img_displayer.display(img_disp, wait_key_ms=1)
             video_writer.write(img_disp)
 
             # -- Get skeleton data and save to file
